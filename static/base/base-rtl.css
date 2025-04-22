@@ -1,0 +1,143 @@
+/* 
+   base-rtl.css - Right-to-left language support
+   This file is loaded conditionally for RTL languages
+*/
+
+/* Basic RTL overrides */
+body {
+    direction: rtl;
+    text-align: right;
+}
+
+/* Fix flexbox direction */
+.header-content,
+.nav-links,
+.hero-buttons,
+.footer-content,
+.social-icons,
+.auth-buttons,
+.mobile-auth-buttons {
+    flex-direction: row-reverse;
+}
+
+/* Fix margins and paddings */
+.nav-links li,
+.benefit-icon,
+.footer-link-group ul li i {
+    margin-right: 0;
+    margin-left: var(--spacing-md);
+}
+
+
+.social-icons {
+    justify-content: flex-end; /* align to the right */
+    flex-direction: row-reverse;
+}
+
+.logo {
+    margin-right: 0;
+    margin-left: var(--spacing-lg);
+}
+
+.social-icons
+.footer-link-group ul li i {
+    margin-right: 0;
+    margin-left: var(--spacing-sm);
+}
+
+/* Fix alignments */
+.section-title::after {
+    margin: var(--spacing-sm) auto 0;
+}
+
+/* Fix positioning for absolutely positioned elements */
+.hero::before {
+    right: auto;
+    left: -10%;
+}
+
+.hero::after {
+    left: auto;
+    right: -5%;
+}
+
+.mobile-menu-toggle {
+    right: auto;
+    left: var(--spacing-md);
+}
+
+.close-menu {
+    right: auto;
+    left: var(--spacing-lg);
+}
+
+.mobile-nav {
+    right: auto;
+    left: -300px;
+}
+
+.mobile-nav.open {
+    right: auto;
+    left: 0;
+}
+
+.scroll-top-btn {
+    right: auto;
+    left: 20px;
+}
+
+/* Text shadows directional fix */
+.hero-content h1,
+.section-title {
+    text-shadow: -2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Fix input fields */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"] {
+    text-align: right;
+}
+
+/* Adjust form elements */
+.form-group label {
+    text-align: right;
+}
+
+/* Fix icon directions for context */
+.fa-chevron-right:before {
+    content: "\f053"; /* FontAwesome left chevron */
+}
+
+.fa-chevron-left:before {
+    content: "\f054"; /* FontAwesome right chevron */
+}
+
+.fa-arrow-right:before {
+    content: "\f060"; /* FontAwesome left arrow */
+}
+
+.fa-arrow-left:before {
+    content: "\f061"; /* FontAwesome right arrow */
+}
+
+/* Fix animations for RTL */
+@keyframes slideInRTL {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.slide-in {
+    transform: translateX(30px);
+    animation-name: slideInRTL;
+}
+
+/* Adjust grid layout */
+@media (max-width: 992px) {
+    .footer-link-group {
+        text-align: right;
+    }
+}

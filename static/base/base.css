@@ -52,6 +52,28 @@
     --transition-fast: 0.2s ease;
     --transition-normal: 0.3s ease;
     --transition-slow: 0.5s ease;
+
+     /* Layout constants */
+     --max-content-width: 1200px;
+     --sidebar-width: 280px;
+     --header-height: 80px;
+     --footer-height: auto;
+     --grid-gap: var(--spacing-lg);
+     
+     /* Container padding based on screen size */
+     --container-padding-sm: var(--spacing-md);
+     --container-padding-md: var(--spacing-lg);
+     --container-padding-lg: var(--spacing-xl);
+     
+     /* Z-index hierarchy */
+     --z-background: -1;
+     --z-default: 1;
+     --z-header: 100;
+     --z-dropdown: 150;
+     --z-modal: 200;
+     --z-overlay: 250;
+     --z-toast: 300;
+     --z-preloader: 9999;
 }
 
 /* Reset and base styles */
@@ -87,17 +109,29 @@ a:hover {
 img {
     max-width: 100%;
     height: auto;
+    display: block; /* Prevents image gaps */
+    object-fit: cover; /* Better image scaling */
 }
 
 ul {
     list-style: none;
 }
 
+.hero-image,
+.benefit-icon,
+.feature-image {
+    aspect-ratio: 4/3;
+    overflow: hidden;
+}
+
 .container {
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 var(--spacing-lg);
+    max-width: var(--max-content-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--container-padding-md);
+    padding-right: var(--container-padding-md);
+    box-sizing: border-box;
 }
 
 /* Typography */
@@ -465,6 +499,103 @@ h3 {
     color: var(--text-medium);
 }
 
+
+
+/* Localization support */
+/* Language selector */
+.language-selector {
+    position: relative;
+    margin-left: var(--spacing-xs);
+}
+
+.language-current {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    background: transparent;
+    border: none;
+    color: var(--text-medium);
+    cursor: pointer;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius-md);
+    transition: background-color var(--transition-normal);
+}
+
+.language-current:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.language-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--background);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-md);
+    padding: var(--spacing-xs);
+    min-width: 150px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all var(--transition-normal);
+    z-index: var(--z-dropdown);
+}
+
+.language-selector:hover .language-dropdown,
+.language-dropdown:hover {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.language-dropdown li {
+    margin: 0;
+}
+
+.language-dropdown a {
+    display: block;
+    padding: var(--spacing-sm) var(--spacing-md);
+    color: var(--text-dark);
+    border-radius: var(--border-radius-sm);
+    transition: background-color var(--transition-normal);
+}
+
+.language-dropdown a:hover {
+    background-color: var(--background-light);
+}
+
+.language-dropdown a.active {
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+/* RTL support */
+[dir="rtl"] {
+    text-align: right;
+}
+
+[dir="rtl"] .nav-links,
+[dir="rtl"] .logo {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .hero-content {
+    text-align: right;
+}
+
+[dir="rtl"] .benefit-card,
+[dir="rtl"] .footer-link-group ul li i {
+    margin-right: 0;
+    margin-left: var(--spacing-sm);
+}
+
+/* Stability for all viewports
+@supports (height: 100svh) {
+    .hero {
+        min-height: 100svh;
+    } */
+/* } */
+
 /* Footer */
 .footer {
     background-color: var(--background-alt);
@@ -631,6 +762,25 @@ h3 {
         --h1-size: 2.5rem;
         --h2-size: 2rem;
         --h3-size: 1.75rem;
+        --container-padding-md: var(--container-padding-sm);
+    }
+    h1, h2, h3, h4, h5, h6, p {
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        -ms-word-break: break-all;
+        word-break: break-word;
+        hyphens: auto;
+    }
+
+    /* Improve tap targets */
+    .nav-links a, 
+    .btn,
+    .mobile-nav-links a,
+    .footer-link-group ul li a {
+        padding: 12px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
     }
     
     .nav-desktop {

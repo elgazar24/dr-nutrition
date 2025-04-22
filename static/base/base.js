@@ -2,6 +2,8 @@
 
 
 document.addEventListener('DOMContentLoaded', function() {
+
+
     // Mobile menu functionality
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     const closeMenu = document.querySelector('.close-menu');
@@ -487,4 +489,279 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 500);
         }, 500);
     });
+});
+
+
+// Localization support
+document.addEventListener('DOMContentLoaded', function() {
+    // Language detection and switching
+    const languageLinks = document.querySelectorAll('.language-dropdown a');
+    const languageNameElement = document.querySelector('.language-name');
+    const htmlElement = document.documentElement;
+    const rtlStylesheet = document.getElementById('rtl-stylesheet');
+    
+    // Detect saved language or browser language
+    function detectLanguage() {
+        const savedLang = localStorage.getItem('preferredLanguage');
+        if (savedLang) {
+            return savedLang;
+        }
+        
+        // Get browser language
+        const browserLang = navigator.language || navigator.userLanguage;
+        const shortLang = browserLang.split('-')[0];
+        
+        // Check if we support this language
+        const supportedLangs = Array.from(languageLinks).map(link => link.getAttribute('data-lang'));
+        return supportedLangs.includes(shortLang) ? shortLang : 'en';
+    }
+    
+    // Set page language
+    function setLanguage(lang) {
+        // Save preference
+        localStorage.setItem('preferredLanguage', lang);
+        
+        // Update HTML attributes
+        htmlElement.setAttribute('lang', lang);
+        
+        // Handle RTL languages
+        const isRTL = ['ar', 'he', 'fa', 'ur'].includes(lang);
+        htmlElement.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
+        
+        // Enable/disable RTL stylesheet
+        if (rtlStylesheet) {
+            rtlStylesheet.disabled = !isRTL;
+        }
+        
+        // Update current language display
+        if (languageNameElement) {
+            const activeLangLink = document.querySelector(`.language-dropdown a[data-lang="${lang}"]`);
+            if (activeLangLink) {
+                languageNameElement.textContent = activeLangLink.textContent;
+            }
+        }
+        
+        // Update active class
+        languageLinks.forEach(link => {
+            if (link.getAttribute('data-lang') === lang) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+        
+        // Load translations and apply them
+        loadTranslations(lang);
+    }
+    
+    // Load and apply translations
+    function loadTranslations(lang) {
+        fetch(`locales/${lang}/translation.json`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Failed to load translations for ${lang}`);
+                }
+                return response.json();
+            })
+            .then(translations => {
+                applyTranslations(translations);
+            })
+            .catch(error => {
+                console.error('Translation error:', error);
+                // Fallback to English if translation file not found
+                if (lang !== 'en') {
+                    loadTranslations('en');
+                }
+            });
+    }
+    
+    // Apply translations to the page
+    function applyTranslations(translations) {
+        const elements = document.querySelectorAll('[data-i18n]');
+        
+        elements.forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            const translation = getNestedTranslation(translations, key);
+            
+            if (translation) {
+                // Handle elements with HTML inside (like spans with highlight class)
+                if (element.innerHTML.includes('<span') || element.innerHTML.includes('<strong') || element.innerHTML.includes('<em')) {
+                    // Preserve HTML tags while replacing text
+                    const tempElement = document.createElement('div');
+                    tempElement.innerHTML = element.innerHTML;
+                    
+                    // Extract the text nodes and replace them while preserving HTML structure
+                    replaceTextNodesOnly(tempElement, translation);
+                    element.innerHTML = tempElement.innerHTML;
+                } else {
+                    element.innerHTML = translation;
+                }
+            }
+        });
+    }
+    
+    // Helper function to get nested translations
+    function getNestedTranslation(obj, path) {
+        const keys = path.split('.');
+        return keys.reduce((acc, key) => acc && acc[key], obj);
+    }
+    
+    // Replace text nodes while preserving HTML
+    function replaceTextNodesOnly(element, newText) {
+        // Simple case - no children, replace everything
+        if (element.childNodes.length === 1 && element.childNodes[0].nodeType === Node.TEXT_NODE) {
+            element.textContent = newText;
+            return;
+        }
+        
+        // Complex case - preserve child elements, replace only first text node
+        for (let i = 0; i < element.childNodes.length; i++) {
+            const node = element.childNodes[i];
+            if (node.nodeType === Node.TEXT_NODE) {
+                node.textContent = newText;
+                break; // Replace only first text node
+            }
+        }
+    }
+    
+    // Set up language switcher
+    languageLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const lang = this.getAttribute('data-lang');
+            setLanguage(lang);
+        });
+    });
+    
+    // Initialize language
+    setLanguage(detectLanguage());
+    
+    // Enable language dropdown keyboard navigation
+    const languageDropdown = document.querySelector('.language-dropdown');
+    const languageToggle = document.querySelector('.language-current');
+    
+    if (languageToggle && languageDropdown) {
+        languageToggle.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowDown') {
+                e.preventDefault();
+                languageDropdown.style.opacity = '1';
+                languageDropdown.style.visibility = 'visible';
+                languageDropdown.style.transform = 'translateY(0)';
+                
+                const firstLink = languageDropdown.querySelector('a');
+                if (firstLink) {
+                    firstLink.focus();
+                }
+            }
+        });
+        
+        // Add keyboard navigation for the dropdown items
+        languageDropdown.addEventListener('keydown', function(e) {
+            const links = Array.from(this.querySelectorAll('a'));
+            const currentIndex = links.findIndex(link => document.activeElement === link);
+            
+            if (e.key === 'Escape') {
+                languageDropdown.style.opacity = '0';
+                languageDropdown.style.visibility = 'hidden';
+                languageToggle.focus();
+            } else if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                const nextIndex = (currentIndex + 1) % links.length;
+                links[nextIndex].focus();
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                const prevIndex = (currentIndex - 1 + links.length) % links.length;
+                links[prevIndex].focus();
+            }
+        });
+    }
+});
+
+// Improve stability
+document.addEventListener('DOMContentLoaded', function() {
+    // Improve performance with passive event listeners
+    const passiveSupported = () => {
+        let passive = false;
+        try {
+            const options = Object.defineProperty({}, "passive", {
+                get: function() { passive = true; return true; }
+            });
+            window.addEventListener("test", null, options);
+            window.removeEventListener("test", null, options);
+        } catch(err) {}
+        return passive;
+    };
+    
+    const passiveOpt = passiveSupported() ? { passive: true } : false;
+    
+    // Use passive listeners for scroll events
+    window.addEventListener('scroll', function() {
+        // Existing scroll handlers
+    }, passiveOpt);
+    
+    // Debounce resize handler for better performance
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() {
+            // Handle layout adjustments here
+            checkMobileNavState();
+        }, 250);
+    });
+    
+    // Handle visibility changes (improve UX when tab is inactive)
+    document.addEventListener('visibilitychange', function() {
+        if (document.visibilityState === 'visible') {
+            // Resume animations or other heavy operations
+            document.body.classList.remove('tab-inactive');
+        } else {
+            // Pause animations or other heavy operations
+            document.body.classList.add('tab-inactive');
+        }
+    });
+    
+    // Check mobile nav state after resize
+    function checkMobileNavState() {
+        const mobileNav = document.querySelector('.mobile-nav');
+        const body = document.body;
+        
+        // If window width > 768px and mobile nav is open, close it
+        if (window.innerWidth > 768 && mobileNav && mobileNav.classList.contains('open')) {
+            mobileNav.classList.remove('open');
+            body.style.overflow = '';
+        }
+    }
+    
+    // Add error handling for images
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+        img.addEventListener('error', function() {
+            this.src = '/api/placeholder/300/200'; // Fallback image
+            this.alt = 'Image could not be loaded';
+            this.classList.add('img-error');
+        });
+    });
+    
+    // Fix iOS 100vh issue
+    function setVhProperty() {
+        const vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+    
+    setVhProperty();
+    window.addEventListener('resize', setVhProperty);
+    
+    // Add touch support detection
+    if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+        document.documentElement.classList.add('touch-device');
+    } else {
+        document.documentElement.classList.add('no-touch');
+    }
+    
+    // Add browser detection for specific fixes
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    
+    if (isIOS) document.documentElement.classList.add('ios');
+    if (isSafari) document.documentElement.classList.add('safari');
 });

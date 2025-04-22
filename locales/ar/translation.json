@@ -1,0 +1,50 @@
+{
+  "title" : "Dr. Nawal",
+    "navigation": {
+      "home": "الرئيسية",
+      "packages": "الإشتراكات",
+      "articles": "المقالات",
+      "bookConsultation": "تواصل الآن",
+      "login": "تسجيل",
+      "register": "مستخدم جديد",
+      "account": "حسابي",
+      "language" : "اللغة"
+    },
+    "hero": {
+      "title": "Nutrition Tailored to Your Lifestyle",
+      "subtitle": "Experience personalized nutrition plans designed by Dr. Nutrition to help you achieve your health goals.",
+      "bookButton": "Book Consultation",
+      "learnMoreButton": "Learn More"
+    },
+    "benefits": {
+      "title": "Why Choose Dr. Nutrition?",
+      "personalizedPlans": {
+        "title": "Personalized Plans",
+        "description": "Nutrition programs tailored to your unique health needs and goals."
+      },
+      "evidenceBased": {
+        "title": "Evidence-Based",
+        "description": "Scientifically backed advice from certified nutrition specialists."
+      },
+      "ongoingSupport": {
+        "title": "Ongoing Support",
+        "description": "Continuous guidance and adjustments throughout your health journey."
+      }
+    },
+    "footer": {
+      "quickLinks": "روابط سريعة",
+      "home" : "الرئيسية",
+      "aboutus" : "من نحن",
+      "services" : "الخدمات",
+      "testimonials" : "آراء العملاء",
+      "articles" : "المقالات",
+      "recipes" : "الوصفات",
+      "nutritionGuide" : "دليل التغذية",
+      "faq" : "اسئلة شائعة",
+      "resources": "مصادر",
+      "contact": "تواصل معنا",
+      "copyright": "© 2025 Dr. Nutrition. جميع الحقوق محفوظة",
+      "privacyPolicy": "الخصوصية و الأمان",
+      "termsOfService": "شروط الخدمة"
+    }
+  }
