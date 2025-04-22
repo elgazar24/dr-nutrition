@@ -1,0 +1,74 @@
+Theme Colors
+
+Primary Colors:
+
+Main Green (#4CAF50): Used for primary buttons and key elements
+Light Green (#81C784): Used for hover states and secondary elements
+Dark Green (#388E3C): Used for text and accents
+
+
+Accent Colors:
+
+Light Lime Green (#8BC34A): For secondary buttons and highlights
+Yellow-Green (#CDDC39): For text highlights and decorative elements
+
+
+Neutral Colors:
+
+Dark Text (#263238): Almost black for main text
+Medium Text (#546E7A): Dark gray for secondary text
+Light Gray (#B0BEC5): For borders and dividers
+Background White (#FFFFFF): Main background
+Off-white (#F5F7FA): Secondary background
+Very Light Green Tint (#ECF4F1): For hero and footer sections
+
+
+
+Design Features
+
+Modern Elements:
+
+Clean, minimalist design with plenty of white space
+Subtle animations (fade-in, slide-in effects)
+Shadow effects for depth
+Smooth transitions and hover effects
+Card-based layout for content sections
+
+
+Responsive Design:
+
+Mobile-first approach
+Hamburger menu for mobile devices
+Grid layouts that adapt to different screen sizes
+Adjusted typography for smaller screens
+
+
+Interactive Elements:
+
+Button hover effects with ripple animation
+Scrolling animations
+Smooth scroll navigation
+Card hover effects
+Form validation with visual feedback
+
+
+Brand Identity:
+
+Green apple theme consistent throughout
+Modern sans-serif typography (Poppins)
+Apple icon used in various places
+Consistent color scheme reinforcing the health/nutrition theme
+
+
+
+Navigation Structure
+
+Logo and name on the left
+Main navigation on the right (Home, Packages, Articles, Book Consultation)
+Authentication buttons (Login/Register or Account when logged in)
+Mobile-friendly navigation with hamburger menu
+
+Footer Structure
+
+Three-column layout with logo/social media, quick links, and contact information
+Bottom footer with copyright and legal links

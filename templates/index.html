@@ -1,0 +1,58 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="fade-in">Nutrition Tailored to <span class="highlight">Your Lifestyle</span></h1>
+                <p class="fade-in delay-1">Experience personalized nutrition plans designed by Dr. Nutrition to help
+                    you achieve your health goals.</p>
+                <div class="hero-buttons fade-in delay-2">
+                    <a href="#" class="btn btn-primary">Book Consultation</a>
+                    <a href="#" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+            <div class="hero-image fade-in delay-3">
+                <img src="{{ url_for('static', filename='images/healthy-eating.png')}}" alt="Healthy eating illustration">
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <h2 class="section-title">Why Choose Dr. Nutrition?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card slide-in">
+                    <div class="benefit-icon">
+                        <i class="fas fa-apple-alt"></i>
+                    </div>
+                    <h3>Personalized Plans</h3>
+                    <p>Nutrition programs tailored to your unique health needs and goals.</p>
+                </div>
+                <div class="benefit-card slide-in delay-1">
+                    <div class="benefit-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>Evidence-Based</h3>
+                    <p>Scientifically backed advice from certified nutrition specialists.</p>
+                </div>
+                <div class="benefit-card slide-in delay-2">
+                    <div class="benefit-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Ongoing Support</h3>
+                    <p>Continuous guidance and adjustments throughout your health journey.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+{% endblock %}
