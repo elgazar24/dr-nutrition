@@ -15,6 +15,7 @@
     <!-- For older browsers  -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.12.1/polyfill.min.js" defer></script>
 
+    {% block styles %}{% endblock %}
     <title data-i18n="title">Dr. Nutrition | Healthy Lifestyle Solutions</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='base/base.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -35,10 +36,10 @@
                 </a>
                 <nav class="nav-desktop">
                     <ul class="nav-links">
-                        <li><a href="#" class="active" data-i18n="navigation.home">Home</a></li>
-                        <li><a href="#" data-i18n="navigation.packages">Packages</a></li>
-                        <li><a href="#" data-i18n="navigation.articles">Articles</a></li>
-                        <li><a href="#" data-i18n="navigation.bookConsultation">Book Consultation</a></li>
+                        <li><a href="{{ url_for('home')}}" class="active" data-i18n="navigation.home">Home</a></li>
+                        <li><a href="/subscriptions" data-i18n="navigation.packages">Packages</a></li>
+                        <li><a href="/articles" data-i18n="navigation.articles">Articles</a></li>
+                        <li><a href="/book_consultation" data-i18n="navigation.bookConsultation">Book Consultation</a></li>
                         <div class="language-selector">
                             <button class="language-current" aria-label="Select language">
                                 <i class="fas fa-globe"></i> <span class="language-name" data-i18n="navigation.language">English</span> <i class="fas fa-chevron-down"></i>
@@ -51,8 +52,8 @@
                             </ul>
                         </div>
                         <li class="auth-buttons">
-                            <a href="#" class="btn btn-outline" data-i18n="navigation.login">Login</a>
-                            <a href="#" class="btn btn-primary" data-i18n="navigation.register">Register</a>
+                            <a href="/login" class="btn btn-outline" data-i18n="navigation.login">Login</a>
+                            <a href="/register" class="btn btn-primary" data-i18n="navigation.register">Register</a>
                         </li>
                     </ul>
                 </nav>
@@ -68,13 +69,13 @@
             <i class="fas fa-times"></i>
         </div>
         <ul class="mobile-nav-links">
-            <li><a href="#" class="active" data-i18n="navigation.home">Home</a></li>
-            <li><a href="#" data-i18n="navigation.packages">Packages</a></li>
-            <li><a href="#" data-i18n="navigation.articles">Articles</a></li>
-            <li><a href="#" data-i18n="navigation.bookConsultation">Book Consultation</a></li>
+            <li><a href="{{ url_for('home')}}" class="active" data-i18n="navigation.home">Home</a></li>
+            <li><a href="/subscriptions" data-i18n="navigation.packages">Packages</a></li>
+            <li><a href="/articles" data-i18n="navigation.articles">Articles</a></li>
+            <li><a href="/book_consultation" data-i18n="navigation.bookConsultation">Book Consultation</a></li>
             <li class="mobile-auth-buttons">
-                <a href="#" class="btn btn-outline" data-i18n="navigation.login">Login</a>
-                <a href="#" class="btn btn-primary" data-i18n="navigation.register">Register</a>
+                <a href="/login" class="btn btn-outline" data-i18n="navigation.login">Login</a>
+                <a href="/register" class="btn btn-primary" data-i18n="navigation.register">Register</a>
             </li>
         </ul>
     </nav>
@@ -91,29 +92,30 @@
                     <h2 class="footer-logo-text" data-i18n="title">Dr. Nawal</h2>
                     <p data-i18n="hero.subtitle">Your partner in nutrition and wellness.</p>
                     <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://l.jaco.live/MfWePqoaG0"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://l.jaco.live/MfWePqoaG0"><i class="fab fa-instagram"></i></a>
+                        <a href="https://l.jaco.live/MfWePqoaG0"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.tiktok.com/@drnawal94"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://l.jaco.live/MfWePqoaG0"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
                 <div class="footer-links">
                     <div class="footer-link-group">
                         <h3 data-i18n="footer.quickLinks">Quick Links</h3>
                         <ul>
-                            <li><a href="#" data-i18n="footer.home">Home</a></li>
-                            <li><a href="#" data-i18n="footer.aboutus">About Us</a></li>
-                            <li><a href="#" data-i18n="footer.services">Services</a></li>
-                            <li><a href="#" data-i18n="footer.testimonials">Testimonials</a></li>
+                            <li><a href="{{ url_for('home')}}" class="active" data-i18n="footer.home">Home</a></li>
+                            <li><a href="/about" data-i18n="footer.aboutus">About Us</a></li>
+                            <li><a href="/subscriptions" data-i18n="footer.services">Services</a></li>
+                            <li><a href="/feedbacks" data-i18n="footer.testimonials">Testimonials</a></li>
                         </ul>
                     </div>
                     <div class="footer-link-group">
                         <h3 data-i18n="footer.resources">Resources</h3>
                         <ul>
-                            <li><a href="#" data-i18n="footer.articles">Articles</a></li>
-                            <li><a href="#" data-i18n="footer.recipes">Recipes</a></li>
-                            <li><a href="#" data-i18n="footer.nutritionGuide">Nutrition Guide</a></li>
-                            <li><a href="#" data-i18n="footer.faq">FAQ</a></li>
+                            <li><a href="/articles" data-i18n="footer.articles">Articles</a></li>
+                            <li><a href="/recipes" data-i18n="footer.recipes">Recipes</a></li>
+                            <li><a href="/nutrition-guide" data-i18n="footer.nutritionGuide">Nutrition Guide</a></li>
+                            <li><a href="/frequently-asked-questions" data-i18n="footer.faq">FAQ</a></li>
                         </ul>
                     </div>
                     <div class="footer-link-group">
@@ -129,13 +131,13 @@
             <div class="footer-bottom">
                 <p data-i18n="footer.copyright">&copy; 2025 Dr. Nawal. All rights reserved.</p>
                 <div class="footer-bottom-links">
-                    <a href="#" data-i18n="footer.privacyPolicy">Privacy Policy</a>
-                    <a href="#" data-i18n="footer.termsOfService">Terms of Service</a>
+                    <a href="/privacy-policy" data-i18n="footer.privacyPolicy">Privacy Policy</a>
+                    <a href="/terms-of-service" data-i18n="footer.termsOfService">Terms of Service</a>
                 </div>
             </div>
         </div>
     </footer>
-
+    {% block scripts %}{% endblock %}
     <script src="{{ url_for('static', filename='base/base.js') }}"></script>
 </body>
 

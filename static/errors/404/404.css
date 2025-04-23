@@ -1,0 +1,160 @@
+
+.error-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 140vh;
+    background-color: var(--background-alt);
+    padding: var(--spacing-xl) 0;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .error-page::before {
+    content: '';
+    position: absolute;
+    top: -10%;
+    right: -5%;
+    width: 300px;
+    height: 300px;
+    background-color: var(--accent-light);
+    border-radius: 50%;
+    opacity: 0.1;
+    z-index: 1;
+  }
+  
+  .error-page::after {
+    content: '';
+    position: absolute;
+    bottom: -15%;
+    left: -5%;
+    width: 250px;
+    height: 250px;
+    background-color: var(--primary-light);
+    border-radius: 50%;
+    opacity: 0.1;
+    z-index: 1;
+  }
+  
+  .error-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .error-illustration {
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .error-content h1 {
+    font-size: 2.5rem;
+    color: var(--primary-dark);
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .error-message {
+    font-size: 1.2rem;
+    color: var(--text-medium);
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .error-actions {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+  }
+  
+  .countdown-container {
+    margin: var(--spacing-lg) 0;
+  }
+  
+  .countdown-container h3 {
+    color: var(--primary-dark);
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .countdown {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md);
+  }
+  
+  .countdown-item {
+    background-color: var(--background);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-md);
+    min-width: 80px;
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .countdown-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+  }
+  
+  .countdown-label {
+    font-size: 0.875rem;
+    color: var(--text-medium);
+  }
+  
+  .subscribe-form {
+    background-color: var(--background);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-md);
+    margin-top: var(--spacing-lg);
+  }
+  
+  .subscribe-form h3 {
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  .form-container {
+    display: flex;
+    margin-top: var(--spacing-md);
+  }
+  
+  .email-input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--text-light);
+    margin-left: var(--spacing-md);
+    border-radius: var(--border-radius-md) 0 0 var(--border-radius-md);
+    font-family: var(--font-family);
+    font-size: var(--body-size);
+  }
+  
+  .form-container .btn {
+    border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;
+  }
+  
+  @media (max-width: 768px) {
+    .error-actions {
+      flex-direction: column;
+    }
+    
+    .countdown {
+      flex-wrap: wrap;
+    }
+    
+    .countdown-item {
+      min-width: 60px;
+    }
+    
+    .form-container {
+      flex-direction: column;
+    }
+    
+    .email-input {
+      border-radius: var(--border-radius-md);
+      margin-bottom: var(--spacing-sm);
+    }
+    
+    .form-container .btn {
+      border-radius: var(--border-radius-md);
+    }
+  }

@@ -172,8 +172,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Testimonial carousel (if added later)
-    /* 
-    Note: Add this when testimonial section is implemented
+    
+    // Note: Add this when testimonial section is implemented
     const testimonialSlides = document.querySelectorAll('.testimonial-slide');
     const prevButton = document.querySelector('.testimonial-prev');
     const nextButton = document.querySelector('.testimonial-next');
@@ -199,102 +199,7 @@ document.addEventListener('DOMContentLoaded', function() {
             showSlide(currentSlide);
         });
     }
-    */
-
-    // // Form validation (for contact/booking forms when added)
-    // const forms = document.querySelectorAll('form');
     
-    // forms.forEach(form => {
-    //     form.addEventListener('submit', function(e) {
-    //         let isValid = true;
-    //         const requiredFields = form.querySelectorAll('[required]');
-            
-    //         requiredFields.forEach(field => {
-    //             if (!field.value.trim()) {
-    //                 isValid = false;
-                    
-    //                 // Create or update error message
-    //                 let errorMsg = field.parentNode.querySelector('.error-message');
-                    
-    //                 if (!errorMsg) {
-    //                     errorMsg = document.createElement('span');
-    //                     errorMsg.classList.add('error-message');
-    //                     errorMsg.style.color = 'var(--error)';
-    //                     errorMsg.style.fontSize = 'var(--small-size)';
-    //                     errorMsg.style.display = 'block';
-    //                     errorMsg.style.marginTop = '5px';
-    //                     field.parentNode.appendChild(errorMsg);
-    //                 }
-                    
-    //                 errorMsg.textContent = 'This field is required';
-                    
-    //                 // Highlight field
-    //                 field.style.borderColor = 'var(--error)';
-    //             } else {
-    //                 // Clear error styling
-    //                 const errorMsg = field.parentNode.querySelector('.error-message');
-    //                 if (errorMsg) {
-    //                     errorMsg.remove();
-    //                 }
-    //                 field.style.borderColor = '';
-    //             }
-    //         });
-            
-    //         // Email validation if applicable
-    //         const emailFields = form.querySelectorAll('input[type="email"]');
-    //         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            
-    //         emailFields.forEach(field => {
-    //             if (field.value.trim() && !emailRegex.test(field.value)) {
-    //                 isValid = false;
-                    
-    //                 // Create or update error message
-    //                 let errorMsg = field.parentNode.querySelector('.error-message');
-                    
-    //                 if (!errorMsg) {
-    //                     errorMsg = document.createElement('span');
-    //                     errorMsg.classList.add('error-message');
-    //                     errorMsg.style.color = 'var(--error)';
-    //                     errorMsg.style.fontSize = 'var(--small-size)';
-    //                     errorMsg.style.display = 'block';
-    //                     errorMsg.style.marginTop = '5px';
-    //                     field.parentNode.appendChild(errorMsg);
-    //                 }
-                    
-    //                 errorMsg.textContent = 'Please enter a valid email address';
-                    
-    //                 // Highlight field
-    //                 field.style.borderColor = 'var(--error)';
-    //             }
-    //         });
-            
-    //         if (!isValid) {
-    //             e.preventDefault();
-    //         }
-    //     });
-    // });
-
-    // // Add loading indicator for form submissions
-    // forms.forEach(form => {
-    //     form.addEventListener('submit', function(e) {
-    //         if (this.checkValidity()) {
-    //             const submitBtn = this.querySelector('button[type="submit"]');
-                
-    //             if (submitBtn) {
-    //                 const originalText = submitBtn.innerHTML;
-    //                 submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
-    //                 submitBtn.disabled = true;
-                    
-    //                 // Restore button state if form submission fails
-    //                 // This is just for demo, actual forms would have proper server handling
-    //                 setTimeout(() => {
-    //                     submitBtn.innerHTML = originalText;
-    //                     submitBtn.disabled = false;
-    //                 }, 3000);
-    //             }
-    //         }
-    //     });
-    // });
 
     // Add scroll-to-top button
     const scrollTopBtn = document.createElement('button');
@@ -764,4 +669,39 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (isIOS) document.documentElement.classList.add('ios');
     if (isSafari) document.documentElement.classList.add('safari');
+});
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Get the current path from the window location
+    const currentPath = window.location.pathname;
+    
+    // Select all nav links
+    const navLinks = document.querySelectorAll('.nav-links a');
+    
+    // Remove 'active' class from all links first
+    navLinks.forEach(link => {
+        if (link.parentElement.className !== 'language-dropdown') {
+            link.classList.remove('active');
+        }
+    });
+    
+    // Add 'active' class to the link that matches the current path
+    navLinks.forEach(link => {
+        const linkPath = link.getAttribute('href');
+        
+        // Skip language selector links
+        if (link.parentElement.className === 'language-dropdown') {
+            return;
+        }
+        
+        // Check if the link's href matches the current path
+        // Handle both absolute paths and relative paths
+        if (linkPath === currentPath || 
+            (linkPath === '/' && currentPath === '/home') || 
+            (linkPath === '{{ url_for("home") }}' && (currentPath === '/' || currentPath === '/home'))) {
+            link.classList.add('active');
+        }
+    });
 });

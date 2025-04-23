@@ -1,54 +1,61 @@
 {
-  "title" : "Dr. Nawal",
-    "navigation": {
-      "home": "Home",
-      "packages": "Packages",
-      "articles": "Articles",
-      "bookConsultation": "Book Consultation",
-      "login": "Login",
-      "register": "Register",
-      "account": "My Account",
-      "language" : "Language"
-    },
-
-    "hero": {
-      "title": "Nutrition Tailored to Your Lifestyle",
-      "subtitle": "Experience personalized nutrition plans designed by Dr. Nutrition to help you achieve your health goals.",
-      "bookButton": "Book Consultation",
-      "learnMoreButton": "Learn More"
-    },
-    "benefits": {
-      "title": "Why Choose Dr. Nutrition?",
-      "personalizedPlans": {
-        "title": "Personalized Plans",
-        "description": "Nutrition programs tailored to your unique health needs and goals."
+  "title": "Dr. Nawal",
+  "navigation": {
+    "home": "Home",
+    "packages": "Packages",
+    "articles": "Articles",
+    "bookConsultation": "Book Consultation",
+    "login": "Login",
+    "register": "Register",
+    "account": "My Account",
+    "language": "Language"
+  },
+  "book_consultation": {
+    "title": "Book Your Consultation",
+    "slug" : "Take the first step toward a healthier you. Schedule a personalized nutrition consultation today.",
+    "info" : {
+      "1" : {
+        "title" : "Expert Guidanc",
+        "description" : "One-on-one sessions with our certified nutrition specialist tailored to your unique needs and goals."
       },
-      "evidenceBased": {
-        "title": "Evidence-Based",
-        "description": "Scientifically backed advice from certified nutrition specialists."
+      "2" : {
+        "title" : "Comprehensive Assessment",
+        "description" : "Detailed analysis of your current health status, dietary habits, and lifestyle factors."
       },
-      "ongoingSupport": {
-        "title": "Ongoing Support",
-        "description": "Continuous guidance and adjustments throughout your health journey."
+      "3" : {
+        "title" : "Personalized Plan",
+        "description" : "Receive a customized nutrition strategy designed specifically for your body and health objectives."
       }
     },
-    "footer": {
-      "quickLinks": "Quick Links",
-      "home" : "Home",
-      "aboutus" : "About Us",
-      "services" : "Service",
-      "testimonials" : "Testimonials",
-      "articles" : "Articles",
-      "recipes" : "Recipes",
-      "nutritionGuide" : "Nutrition Guide",
-      "faq" : "FAQ",
-      "resources": "Resources",
-      "contact": "Contact",
-      "copyright": "© 2025 Dr. Nutrition. All rights reserved.",
-      "privacyPolicy": "Privacy Policy",
-      "termsOfService": "Terms of Service"
+    "info-testimonials" : {
+      "1" : {
+        "name" : "Sarah T.",
+        "description" : "The personalized nutrition plan changed my life. I've never felt better!"
+      }
+    } ,
+    "form" : {
+      "title": "Schedule Your Visit",
+      "name": "Full Name",
+      "email": "Email",
+      "phone": "Phone",
+      "message":  "Message",
+      "submit": "Submit"
     }
+  },
+  "footer": {
+    "quickLinks": "Quick Links",
+    "home": "Home",
+    "aboutus": "About Us",
+    "services": "Service",
+    "testimonials": "Testimonials",
+    "articles": "Articles",
+    "recipes": "Recipes",
+    "nutritionGuide": "Nutrition Guide",
+    "faq": "FAQ",
+    "resources": "Resources",
+    "contact": "Contact",
+    "copyright": "© 2025 Dr. Nutrition. All rights reserved.",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service"
   }
-
-
-  
+}

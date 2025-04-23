@@ -1,0 +1,105 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block styles %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='errors/404/404.css') }}">
+
+
+{% endblock %}
+
+
+
+{% block scripts %}
+
+<script src="{{ url_for(  'static' , filename='errors/404/404.js'  ) }}"></script>
+
+{% endblock %}
+
+
+{% block content %}
+<div class="error-page">
+    <div class="container">
+      <div class="error-content">
+        <div class="error-illustration">
+          <svg width="280" height="280" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
+            <!-- Plant pot -->
+            <rect x="100" y="180" width="80" height="70" fill="#81C784" rx="5" />
+            <rect x="95" y="180" width="90" height="15" fill="#388E3C" rx="5" />
+            
+            <!-- Plant stem and leaves -->
+            <path d="M140 180 L140 120" stroke="#4CAF50" stroke-width="4" />
+            
+            <!-- Small leaves -->
+            <path d="M140 160 C150 155, 160 160, 165 150" stroke="#81C784" stroke-width="3" fill="none" />
+            <path d="M140 150 C130 145, 120 150, 115 140" stroke="#81C784" stroke-width="3" fill="none" />
+            <path d="M140 140 C150 135, 160 140, 165 130" stroke="#81C784" stroke-width="3" fill="none" />
+            
+            <!-- Big leaf -->
+            <path d="M140 130 C120 110, 100 120, 110 140" stroke="#4CAF50" stroke-width="3" fill="#81C784" />
+            
+            <!-- Apple dropping -->
+            <circle cx="160" cy="100" r="15" fill="#8BC34A" />
+            <path d="M160 85 L160 75" stroke="#4CAF50" stroke-width="2" />
+            
+            <!-- 404 text as fruit -->
+            <circle cx="110" cy="90" r="25" fill="#AED581" />
+            <text x="100" y="98" font-size="20" fill="#263238" font-weight="bold">4</text>
+            
+            <circle cx="160" cy="60" r="25" fill="#AED581" />
+            <text x="150" y="68" font-size="20" fill="#263238" font-weight="bold">0</text>
+            
+            <circle cx="210" cy="90" r="25" fill="#AED581" />
+            <text x="200" y="98" font-size="20" fill="#263238" font-weight="bold">4</text>
+          </svg>
+        </div>
+        
+        <h1 class="fade-in">Oops! This Page Is Still Growing</h1>
+        
+        <p class="error-message fade-in delay-1">
+          The page you're looking for is currently being cultivated. Our digital gardeners 
+          are working hard to plant the seeds for this content.
+        </p>
+        
+        <div class="countdown-container fade-in delay-2">
+          <h3>Coming Soon</h3>
+          <div class="countdown">
+            <div class="countdown-item">
+              <div class="countdown-number" id="countdown-days">00</div>
+              <div class="countdown-label">Days</div>
+            </div>
+            <div class="countdown-item">
+              <div class="countdown-number" id="countdown-hours">00</div>
+              <div class="countdown-label">Hours</div>
+            </div>
+            <div class="countdown-item">
+              <div class="countdown-number" id="countdown-minutes">00</div>
+              <div class="countdown-label">Minutes</div>
+            </div>
+            <div class="countdown-item">
+              <div class="countdown-number" id="countdown-seconds">00</div>
+              <div class="countdown-label">Seconds</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="error-actions fade-in delay-3">
+          <a href="/" class="btn btn-primary">Return Home</a>
+          <a href="#" class="btn btn-outline notify-btn">Notify Me When Ready</a>
+        </div>
+        
+        <div class="subscribe-form fade-in delay-3" id="subscribe-form" style="display: none;">
+          <h3>Get Notified</h3>
+          <p>We'll let you know when this page is ready!</p>
+          <div class="form-container">
+            <input type="email" placeholder="Enter your email" class="email-input">
+            <button class="btn btn-secondary">Subscribe</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}

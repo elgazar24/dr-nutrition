@@ -589,12 +589,12 @@ h3 {
     margin-left: var(--spacing-sm);
 }
 
-/* Stability for all viewports
-@supports (height: 100svh) {
+/* Stability for all viewports */
+/* @supports (height: 80svh) {
     .hero {
-        min-height: 100svh;
-    } */
-/* } */
+        min-height: 80svh;
+    }
+} */
 
 /* Footer */
 .footer {

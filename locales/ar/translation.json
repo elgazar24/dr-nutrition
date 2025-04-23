@@ -10,27 +10,22 @@
       "account": "حسابي",
       "language" : "اللغة"
     },
-    "hero": {
-      "title": "Nutrition Tailored to Your Lifestyle",
-      "subtitle": "Experience personalized nutrition plans designed by Dr. Nutrition to help you achieve your health goals.",
-      "bookButton": "Book Consultation",
-      "learnMoreButton": "Learn More"
+
+
+
+
+    "book_consultation" : {
+      
+      "title" : "احجز موعد",
+      "slug" : "احجز موعد مع استشارة التغذية الخاصة بك",  
+      "name" : "الاسم",
+      "email" : "البريد الالكتروني",
+      "phone" : "رقم الجوال",
+      "message" : "الرسالة",
+      "submit" : "احجز موعد"
     },
-    "benefits": {
-      "title": "Why Choose Dr. Nutrition?",
-      "personalizedPlans": {
-        "title": "Personalized Plans",
-        "description": "Nutrition programs tailored to your unique health needs and goals."
-      },
-      "evidenceBased": {
-        "title": "Evidence-Based",
-        "description": "Scientifically backed advice from certified nutrition specialists."
-      },
-      "ongoingSupport": {
-        "title": "Ongoing Support",
-        "description": "Continuous guidance and adjustments throughout your health journey."
-      }
-    },
+
+    
     "footer": {
       "quickLinks": "روابط سريعة",
       "home" : "الرئيسية",

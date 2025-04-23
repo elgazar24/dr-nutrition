@@ -2,19 +2,34 @@
 
 {% block title %}Home Page{% endblock %}
 
+
+{% block styles %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+
+{% endblock %}
+
+
+
+{% block scripts %}
+
+<script src="{{ url_for(  'static' , filename='script.js'  ) }}"></script>
+
+{% endblock %}
+
+
 {% block content %}
-
-
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
                 <h1 class="fade-in">Nutrition Tailored to <span class="highlight">Your Lifestyle</span></h1>
-                <p class="fade-in delay-1">Experience personalized nutrition plans designed by Dr. Nutrition to help
+                <p class="fade-in delay-1">Experience personalized nutrition plans designed by Dr. Nawal to help
                     you achieve your health goals.</p>
                 <div class="hero-buttons fade-in delay-2">
-                    <a href="#" class="btn btn-primary">Book Consultation</a>
-                    <a href="#" class="btn btn-secondary">Learn More</a>
+                    <a href="/book_consultation" class="btn btn-primary">Book Consultation</a>
+                    <a href="/subscriptions" class="btn btn-secondary">Learn More</a>
                 </div>
             </div>
             <div class="hero-image fade-in delay-3">
@@ -26,7 +41,7 @@
     <!-- Benefits Section -->
     <section class="benefits">
         <div class="container">
-            <h2 class="section-title">Why Choose Dr. Nutrition?</h2>
+            <h2 class="section-title">Why Choose Dr. Nawal?</h2>
             <div class="benefits-grid">
                 <div class="benefit-card slide-in">
                     <div class="benefit-icon">
@@ -53,6 +68,123 @@
         </div>
     </section>
 
+    <!-- Featured Subscriptions Section -->
+    <section class="subscriptions">
+        <div class="container">
+            <h2 class="section-title">Popular Nutrition Packages</h2>
+            <div class="subscription-slider">
+                <div class="subscription-cards">
 
+                <!-- Dynamic subscription content will go here  -->
 
+                    
+                </div>
+                <div class="slider-controls">
+                    <button class="slider-arrow prev"><i class="fas fa-chevron-left"></i></button>
+                    <div class="slider-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                    <button class="slider-arrow next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Success Stories</h2>
+            <div class="testimonials-wrapper">
+                <div class="testimonial-carousel">
+                    
+
+                    <!-- Dynamic testimonials content will go here  -->
+                    
+                        
+                </div>
+                <div class="testimonial-controls">
+                    <button class="testimonial-arrow prev"><i class="fas fa-chevron-left"></i></button>
+                    <div class="testimonial-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                    </div>
+                    <button class="testimonial-arrow next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Articles Section -->
+    <section class="articles">
+        <div class="container">
+            <h2 class="section-title">Latest Nutrition Insights</h2>
+            <div class="articles-grid">
+
+                
+                <!-- Dynamic articles content will go here  -->
+
+                
+            </div>
+            <div class="articles-action">
+                <a href="#" class="btn btn-secondary">View All Articles</a>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-image fade-in">
+                    <img src="{{ url_for('static', filename='images/contact-image.jpeg')}}" alt="Contact Dr. Nawal">
+                </div>
+                <div class="contact-form-container fade-in delay-1">
+                    <h2>Have Questions? <span class="highlight">Get in Touch</span></h2>
+                    <p>I'm here to help you on your journey to better health. Send me a message and I'll get back to you shortly.</p>
+                    <form class="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" placeholder="John Doe">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" placeholder="john@example.com">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <select id="subject">
+                                <option value="">Select Topic</option>
+                                <!-- Options will be added dynamically -->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" rows="4" placeholder="How can I help you?"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-wrapper">
+                <div class="cta-content fade-in">
+                    <h2>Ready to Transform Your Health?</h2>
+                    <p>Book a consultation today and take the first step toward a healthier lifestyle with personalized nutrition guidance.</p>
+                </div>
+                <div class="cta-button fade-in delay-1">
+                    <a href="/book_consultation" class="btn btn-primary">Book Your Consultation</a>
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock %}
