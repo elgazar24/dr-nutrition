@@ -1,4 +1,0 @@
-
-chmod 400 '/Users/elgazar/Desktop/DrNawal/server-config/dr-nutrition.pem'
-
-ssh -i '/Users/elgazar/Desktop/DrNawal/server-config/dr-nutrition.pem' ec2-35-174-154-224.compute-1.amazonaws.com
